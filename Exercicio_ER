@@ -1,0 +1,30 @@
+#Questão 1
+import re
+
+texto = "(091)91234 5678,  91 91234 5678, 91-91234-5678, (91) 91234-5678"
+
+a = (re.findall(r'\(091\)9\d{4} \d{4}', texto)) 
+
+b = (re.findall(r'91 9\d{4} \d{4}', texto))
+
+c = re.findall(r'91-9\d{4}-\d{4}', texto)
+
+d = re.findall(r'\(91\) 9\d{4}-\d{4}', texto)
+
+
+print(a, b, c, d)
+
+#Questão 2
+import re
+
+def formatador(number):
+  numero_formatado = re.sub(r'\D', '', number)
+
+  if len(numero_formatado) < 9:
+    return numero_formatado
+
+  numero_formatado = "({}) {} {}".format(numero_formatado[:2], numero_formatado[2:7], numero_formatado[7:])
+
+  return numero_formatado
+
+print(formatador('91981849861'))
